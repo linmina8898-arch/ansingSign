@@ -7,7 +7,7 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- LINE LIFF SDK -->
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 
@@ -23,7 +23,7 @@
                     colors: {
                         theme: {
                             primary: '#553f62',   /* 深梅紫 (主視覺/主文字/按鈕) */
-                            secondary: '#9ca3af', /* 質感灰 (輔助文字/框線) */
+                            secondary: '#6b7280', /* 質感深灰 (輔助文字/框線) - 加深對比度 */
                             accent: '#f07cad',    /* 亮洋紅 (點綴/強調色/選取狀態) */
                             bg: '#fcfafc',        /* 極淺紫灰背底 */
                         }
@@ -41,13 +41,13 @@
         
         /* 隱藏原生卷軸 */
         ::-webkit-scrollbar { width: 4px; background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #9ca3af; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #6b7280; border-radius: 4px; }
 
         /* 精品級輸入框 */
         .input-theme {
             width: 100%;
             background: #ffffff;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #d1d5db;
             border-radius: 0.5rem;
             padding: 1rem 1.25rem;
             font-size: 1rem;
@@ -61,8 +61,8 @@
             box-shadow: 0 0 0 2px rgba(240, 124, 173, 0.15);
         }
         .input-theme::placeholder {
-            color: #9ca3af;
-            font-weight: 300;
+            color: #6b7280; /* 加深 Placeholder 顏色 */
+            font-weight: 400;
         }
 
         /* 標題漸層文字 */
@@ -84,10 +84,10 @@
         
         <!-- 表單標頭 -->
         <div class="text-center mb-12 sm:mb-16 mt-4">
-            <p class="font-display text-theme-accent tracking-[0.3em] text-xs sm:text-sm mb-4">EXECUTIVE TRANSFER</p>
-            <h1 class="text-3xl sm:text-4xl font-serif font-semibold mb-6 tracking-widest text-gradient-accent">企業專屬接送</h1>
+            <p class="font-display text-theme-accent tracking-[0.3em] text-xs sm:text-sm mb-4 font-bold">EXECUTIVE TRANSFER</p>
+            <h1 class="text-3xl sm:text-4xl font-serif font-bold mb-6 tracking-widest text-gradient-accent">企業專屬接送</h1>
             <div class="w-10 h-[2px] bg-theme-accent mx-auto mb-6 rounded-full opacity-60"></div>
-            <p class="text-sm sm:text-base text-theme-secondary leading-relaxed max-w-xl mx-auto font-light px-4">
+            <p class="text-sm sm:text-base text-theme-secondary leading-relaxed max-w-xl mx-auto px-4 font-medium">
                 誠摯感謝您對本公司的青睞。煩請撥冗填寫以下資訊，我們的企業專屬顧問將於一個工作天內與您聯繫，為貴公司量身打造最高效且尊榮的接送體驗。
             </p>
         </div>
@@ -95,9 +95,9 @@
         <form id="inquiryForm" class="space-y-12">
             
             <!-- I. 企業基本資訊 -->
-            <section class="bg-white border border-gray-100 p-6 sm:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
+            <section class="bg-white border border-gray-200 p-6 sm:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1.5 h-full bg-theme-accent opacity-80"></div>
-                <h3 class="font-serif text-xl sm:text-2xl text-theme-primary mb-8 flex items-center tracking-wider">
+                <h3 class="font-serif text-xl sm:text-2xl text-theme-primary mb-8 flex items-center tracking-wider font-semibold">
                     <span class="font-display text-theme-accent mr-4 text-sm opacity-90">01 /</span> 企業基本資訊
                 </h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -114,7 +114,8 @@
                         <input type="text" name="jobTitle" class="input-theme" placeholder="聯絡人職稱" required>
                     </div>
                     <div>
-                        <input type="tel" name="phone" class="input-theme" placeholder="聯絡電話" required>
+                        <!-- 電話欄位，加上 maxlength 限制 -->
+                        <input type="tel" name="phone" id="phoneInput" class="input-theme" placeholder="聯絡電話 (0900-000-000)" maxlength="12" required>
                     </div>
                     <div>
                         <input type="email" name="email" class="input-theme" placeholder="電子信箱" required>
@@ -126,26 +127,26 @@
             </section>
 
             <!-- II. 需求詳細內容 -->
-            <section class="bg-white border border-gray-100 p-6 sm:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
+            <section class="bg-white border border-gray-200 p-6 sm:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1.5 h-full bg-theme-accent opacity-80"></div>
-                <h3 class="font-serif text-xl sm:text-2xl text-theme-primary mb-8 flex items-center tracking-wider">
+                <h3 class="font-serif text-xl sm:text-2xl text-theme-primary mb-8 flex items-center tracking-wider font-semibold">
                     <span class="font-display text-theme-accent mr-4 text-sm opacity-90">02 /</span> 需求詳細內容
                 </h3>
                 
                 <div class="space-y-12">
                     
-                    <!-- 偏好車型 (一個車型一欄，獨立大卡片設計) -->
+                    <!-- 偏好車型 -->
                     <div>
                         <div class="mb-5">
-                            <label class="text-theme-primary font-serif tracking-widest text-lg font-medium">偏好車型 <span class="text-sm text-theme-secondary font-light ml-2 tracking-normal">(可複選)</span></label>
+                            <label class="text-theme-primary font-serif tracking-widest text-lg font-bold">偏好車型 <span class="text-sm text-theme-secondary ml-2 tracking-normal font-normal">(可複選)</span></label>
                         </div>
                         <div class="space-y-4">
                             <!-- 選項 1 -->
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="vehicle" value="高級豪華轎車 (4人座)" class="peer sr-only">
-                                <div class="p-5 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
-                                    <span class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors">高級豪華轎車 <span class="text-sm font-light opacity-80 ml-2">(4人座)</span></span>
-                                    <div class="w-6 h-6 rounded-full border border-gray-300 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
+                                <div class="p-5 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
+                                    <span class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors">高級豪華轎車 <span class="text-sm ml-2">(4人座)</span></span>
+                                    <div class="w-6 h-6 rounded-full border border-gray-400 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
                                         <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
                                     </div>
                                 </div>
@@ -154,12 +155,12 @@
                             <!-- 選項 2 -->
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="vehicle" value="旗艦商務 (如 Sienna/Alphard...等獨立座椅車款)" class="peer sr-only">
-                                <div class="p-5 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
+                                <div class="p-5 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
                                     <div class="pr-4">
-                                        <div class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors mb-1">旗艦商務車</div>
-                                        <div class="text-xs text-theme-secondary peer-checked:text-theme-primary opacity-70 font-light transition-colors">如 Sienna / Alphard 等獨立座椅車款</div>
+                                        <div class="text-theme-secondary peer-checked:text-theme-primary font-bold tracking-wide transition-colors mb-1">旗艦商務車</div>
+                                        <div class="text-sm text-theme-secondary peer-checked:text-theme-primary transition-colors">如 Sienna / Alphard 等獨立座椅車款</div>
                                     </div>
-                                    <div class="w-6 h-6 shrink-0 rounded-full border border-gray-300 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
+                                    <div class="w-6 h-6 shrink-0 rounded-full border border-gray-400 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
                                         <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
                                     </div>
                                 </div>
@@ -168,9 +169,9 @@
                             <!-- 選項 3 -->
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="vehicle" value="舒適商務車 (7-9人座)" class="peer sr-only">
-                                <div class="p-5 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
-                                    <span class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors">舒適商務車 <span class="text-sm font-light opacity-80 ml-2">(7-9人座)</span></span>
-                                    <div class="w-6 h-6 rounded-full border border-gray-300 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
+                                <div class="p-5 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
+                                    <span class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors">舒適商務車 <span class="text-sm ml-2">(7-9人座)</span></span>
+                                    <div class="w-6 h-6 rounded-full border border-gray-400 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
                                         <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
                                     </div>
                                 </div>
@@ -179,9 +180,9 @@
                             <!-- 選項 4 -->
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="vehicle" value="大/中型巴士 (20人座以上)" class="peer sr-only">
-                                <div class="p-5 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
-                                    <span class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors">大 / 中型巴士 <span class="text-sm font-light opacity-80 ml-2">(20人座以上)</span></span>
-                                    <div class="w-6 h-6 rounded-full border border-gray-300 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
+                                <div class="p-5 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:bg-[#f07cad]/5 transition-all duration-300 flex items-center justify-between hover:border-theme-secondary">
+                                    <span class="text-theme-secondary peer-checked:text-theme-primary font-medium tracking-wide transition-colors">大 / 中型巴士 <span class="text-sm ml-2">(20人座以上)</span></span>
+                                    <div class="w-6 h-6 rounded-full border border-gray-400 bg-white peer-checked:border-theme-accent peer-checked:bg-theme-accent flex items-center justify-center transition-all checkbox-indicator">
                                         <svg class="w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
                                     </div>
                                 </div>
@@ -189,42 +190,42 @@
                         </div>
                     </div>
 
-                    <div class="h-px w-full bg-gray-100"></div>
+                    <div class="h-px w-full bg-gray-200"></div>
 
                     <!-- 主要需求類型 -->
                     <div>
                         <div class="mb-5">
-                            <label class="text-theme-primary font-serif tracking-widest text-lg font-medium">需求類型 <span class="text-sm text-theme-secondary font-light ml-2 tracking-normal">(可複選)</span></label>
+                            <label class="text-theme-primary font-serif tracking-widest text-lg font-bold">需求類型 <span class="text-sm text-theme-secondary ml-2 tracking-normal font-normal">(可複選)</span></label>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="needType" value="長期固定派車" class="peer sr-only">
-                                <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     長期固定派車
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="needType" value="高管/貴賓商務接送" class="peer sr-only">
-                                <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     高管/貴賓商務接送
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="needType" value="員工交通接駁" class="peer sr-only">
-                                <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     員工交通接駁
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="needType" value="點對點單次預約" class="peer sr-only">
-                                <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     點對點單次預約
                                 </div>
                             </label>
                             <div class="sm:col-span-2">
                                 <label class="block relative cursor-pointer group mb-3">
                                     <input type="checkbox" id="needTypeOther" name="needType" value="其他" class="peer sr-only" onchange="toggleOtherInput('needTypeOther', 'needTypeOtherText')">
-                                    <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                    <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                         其他需求
                                     </div>
                                 </label>
@@ -233,62 +234,62 @@
                         </div>
                     </div>
 
-                    <div class="h-px w-full bg-gray-100"></div>
+                    <div class="h-px w-full bg-gray-200"></div>
 
                     <!-- 預計使用頻率 -->
                     <div>
                         <div class="mb-5">
-                            <label class="text-theme-primary font-serif tracking-widest text-lg font-medium">使用頻率 <span class="text-sm text-theme-secondary font-light ml-2 tracking-normal">(單選)</span></label>
+                            <label class="text-theme-primary font-serif tracking-widest text-lg font-bold">使用頻率 <span class="text-sm text-theme-secondary ml-2 tracking-normal font-normal">(單選)</span></label>
                         </div>
                         <div class="grid grid-cols-3 gap-3">
                             <label class="block relative cursor-pointer group">
                                 <input type="radio" name="frequency" value="每日固定" class="peer sr-only" required>
-                                <div class="py-3 px-2 rounded-lg border border-gray-200 bg-gray-50 peer-checked:bg-theme-accent peer-checked:text-white peer-checked:border-theme-accent text-theme-secondary transition-all text-center tracking-widest text-sm font-medium hover:border-theme-secondary">
+                                <div class="py-3 px-2 rounded-lg border border-gray-300 bg-gray-50 peer-checked:bg-theme-accent peer-checked:text-white peer-checked:border-theme-accent text-theme-secondary transition-all text-center tracking-widest text-sm font-bold hover:border-theme-secondary">
                                     每日
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="radio" name="frequency" value="每週固定" class="peer sr-only">
-                                <div class="py-3 px-2 rounded-lg border border-gray-200 bg-gray-50 peer-checked:bg-theme-accent peer-checked:text-white peer-checked:border-theme-accent text-theme-secondary transition-all text-center tracking-widest text-sm font-medium hover:border-theme-secondary">
+                                <div class="py-3 px-2 rounded-lg border border-gray-300 bg-gray-50 peer-checked:bg-theme-accent peer-checked:text-white peer-checked:border-theme-accent text-theme-secondary transition-all text-center tracking-widest text-sm font-bold hover:border-theme-secondary">
                                     每週
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="radio" name="frequency" value="不定期彈性需求" class="peer sr-only">
-                                <div class="py-3 px-2 rounded-lg border border-gray-200 bg-gray-50 peer-checked:bg-theme-accent peer-checked:text-white peer-checked:border-theme-accent text-theme-secondary transition-all text-center tracking-widest text-sm font-medium hover:border-theme-secondary">
+                                <div class="py-3 px-2 rounded-lg border border-gray-300 bg-gray-50 peer-checked:bg-theme-accent peer-checked:text-white peer-checked:border-theme-accent text-theme-secondary transition-all text-center tracking-widest text-sm font-bold hover:border-theme-secondary">
                                     彈性
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <div class="h-px w-full bg-gray-100"></div>
+                    <div class="h-px w-full bg-gray-200"></div>
 
                     <!-- 偏好結帳方式 -->
                     <div>
                         <div class="mb-5">
-                            <label class="text-theme-primary font-serif tracking-widest text-lg font-medium">結帳方式 <span class="text-sm text-theme-secondary font-light ml-2 tracking-normal">(單選)</span></label>
+                            <label class="text-theme-primary font-serif tracking-widest text-lg font-bold">結帳方式 <span class="text-sm text-theme-secondary ml-2 tracking-normal font-normal">(單選)</span></label>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <label class="block relative cursor-pointer group">
                                 <input type="radio" name="billing" value="月結報帳" class="peer sr-only" required>
-                                <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm flex items-center justify-center hover:border-theme-secondary">
-                                    <div class="w-4 h-4 rounded-full border border-gray-300 bg-white mr-3 peer-checked:border-[4px] peer-checked:border-theme-accent transition-all"></div>
+                                <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium flex items-center justify-center hover:border-theme-secondary">
+                                    <div class="w-4 h-4 rounded-full border border-gray-400 bg-white mr-3 peer-checked:border-[4px] peer-checked:border-theme-accent transition-all"></div>
                                     月結報帳
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="radio" name="billing" value="趟結轉帳" class="peer sr-only">
-                                <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm flex items-center justify-center hover:border-theme-secondary">
-                                    <div class="w-4 h-4 rounded-full border border-gray-300 bg-white mr-3 peer-checked:border-[4px] peer-checked:border-theme-accent transition-all"></div>
+                                <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium flex items-center justify-center hover:border-theme-secondary">
+                                    <div class="w-4 h-4 rounded-full border border-gray-400 bg-white mr-3 peer-checked:border-[4px] peer-checked:border-theme-accent transition-all"></div>
                                     趟結轉帳
                                 </div>
                             </label>
                             <div>
                                 <label class="block relative cursor-pointer group">
                                     <input type="radio" id="billingOther" name="billing" value="其他" class="peer sr-only" onchange="toggleRadioOther('billing', 'billingOther', 'billingOtherText')">
-                                    <div class="px-5 py-4 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm flex items-center justify-center hover:border-theme-secondary">
-                                        <div class="w-4 h-4 rounded-full border border-gray-300 bg-white mr-3 peer-checked:border-[4px] peer-checked:border-theme-accent transition-all"></div>
+                                    <div class="px-5 py-4 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium flex items-center justify-center hover:border-theme-secondary">
+                                        <div class="w-4 h-4 rounded-full border border-gray-400 bg-white mr-3 peer-checked:border-[4px] peer-checked:border-theme-accent transition-all"></div>
                                         其他
                                     </div>
                                 </label>
@@ -301,41 +302,41 @@
             </section>
 
             <!-- III. 其他補充 -->
-            <section class="bg-white border border-gray-100 p-6 sm:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
+            <section class="bg-white border border-gray-200 p-6 sm:p-10 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.06)] relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-1.5 h-full bg-theme-accent opacity-80"></div>
-                <h3 class="font-serif text-xl sm:text-2xl text-theme-primary mb-8 flex items-center tracking-wider">
+                <h3 class="font-serif text-xl sm:text-2xl text-theme-primary mb-8 flex items-center tracking-wider font-semibold">
                     <span class="font-display text-theme-accent mr-4 text-sm opacity-90">03 /</span> 專屬細節與備註
                 </h3>
                 
                 <div class="space-y-10">
                     <!-- 特殊需求備註 -->
                     <div>
-                        <label class="block text-theme-primary font-serif tracking-widest text-lg mb-2 font-medium">行程備註</label>
-                        <p class="text-xs text-theme-secondary mb-4 font-light">提示：例如外語司機需求、多點停靠、或是特定的報帳與乘車習慣等。</p>
+                        <label class="block text-theme-primary font-serif tracking-widest text-lg mb-2 font-bold">行程備註</label>
+                        <p class="text-sm text-theme-secondary mb-4">提示：例如外語司機需求、多點停靠、或是特定的報帳與乘車習慣等。</p>
                         <textarea id="specialNotes" name="specialNotes" rows="4" class="input-theme resize-none" placeholder="請詳述您的客製化需求..." required></textarea>
                     </div>
 
                     <!-- 方便聯繫的時間 -->
                     <div>
                         <div class="mb-5">
-                            <label class="text-theme-primary font-serif tracking-widest text-lg font-medium">方便聯繫時間 <span class="text-sm text-theme-secondary font-light ml-2 tracking-normal">(可複選)</span></label>
+                            <label class="text-theme-primary font-serif tracking-widest text-lg font-bold">方便聯繫時間 <span class="text-sm text-theme-secondary ml-2 tracking-normal font-normal">(可複選)</span></label>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="contactTime" value="上午 (09:00 - 12:00)" class="peer sr-only">
-                                <div class="px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     上午 (09:00 - 12:00)
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="contactTime" value="下午 (14:00 - 18:00)" class="peer sr-only">
-                                <div class="px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     下午 (14:00 - 18:00)
                                 </div>
                             </label>
                             <label class="block relative cursor-pointer group">
                                 <input type="checkbox" name="contactTime" value="隨時皆可" class="peer sr-only">
-                                <div class="px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm hover:border-theme-secondary">
+                                <div class="px-4 py-3 rounded-xl border border-gray-300 bg-gray-50 peer-checked:border-theme-accent peer-checked:text-theme-primary peer-checked:bg-[#f07cad]/5 text-theme-secondary transition-all text-center tracking-wider text-sm font-medium hover:border-theme-secondary">
                                     隨時皆可
                                 </div>
                             </label>
@@ -354,7 +355,7 @@
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
                 </button>
-                <p class="text-center text-xs text-theme-secondary mt-6 font-light tracking-widest">安興租車承諾嚴密保護您的隱私，資訊僅限內部團隊查閱，絕不外流。</p>
+                <p class="text-center text-sm text-theme-secondary mt-6 tracking-widest font-medium">安興租車承諾嚴密保護您的隱私，資訊僅限內部團隊查閱，絕不外流。</p>
             </div>
         </form>
     </div>
@@ -368,20 +369,21 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path>
                 </svg>
             </div>
-            <h3 class="text-2xl font-serif text-theme-primary mb-3 tracking-widest font-semibold">申請已送出</h3>
-            <p class="text-theme-secondary mb-8 font-light text-sm leading-relaxed text-left">
+            <h3 class="text-2xl font-serif text-theme-primary mb-3 tracking-widest font-bold">申請已送出</h3>
+            <p class="text-theme-secondary mb-8 font-medium text-sm leading-relaxed text-left">
                 誠摯感謝您對本公司的青睞。<br>煩請撥冗填寫以下資訊，我們的企業專屬顧問將於一個工作天內與您聯繫，為貴公司量身打造最高效且尊榮的接送體驗。
             </p>
-            <button onclick="closeModalAndExit()" class="w-full bg-theme-accent text-white py-3 rounded-lg hover:bg-theme-primary transition-colors tracking-widest font-serif text-sm shadow-md">
+            <!-- 若在網頁版測試，這個按鈕才會派上用場 -->
+            <button onclick="closeModalAndExit()" class="w-full bg-theme-accent text-white py-3 rounded-lg hover:bg-theme-primary transition-colors tracking-widest font-serif text-sm shadow-md font-bold">
                 關閉 CLOSE
             </button>
         </div>
     </div>
 
     <!-- 錯誤提示 Toast -->
-    <div id="errorToast" class="fixed top-5 left-1/2 transform -translate-x-1/2 bg-red-500/90 backdrop-blur-sm text-white px-6 py-3 rounded-xl shadow-xl transition-all duration-300 opacity-0 pointer-events-none z-[100] flex items-center translate-y-[-20px]">
+    <div id="errorToast" class="fixed top-5 left-1/2 transform -translate-x-1/2 bg-red-500/95 backdrop-blur-sm text-white px-6 py-3 rounded-xl shadow-2xl transition-all duration-300 opacity-0 pointer-events-none z-[100] flex items-center translate-y-[-20px]">
         <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span id="errorToastText" class="tracking-wider text-sm">請填寫必填欄位</span>
+        <span id="errorToastText" class="tracking-wider text-sm font-bold">請填寫必填欄位</span>
     </div>
 
     <script>
@@ -390,11 +392,28 @@
         document.addEventListener("DOMContentLoaded", () => {
             initializeLiff();
             
+            // 監聽結帳方式切換
             const billingRadios = document.querySelectorAll('input[name="billing"]');
             billingRadios.forEach(radio => {
                 radio.addEventListener('change', () => {
                     toggleRadioOther('billing', 'billingOther', 'billingOtherText');
                 });
+            });
+
+            // 電話號碼動態格式化 (0900-000-000)
+            const phoneInput = document.getElementById('phoneInput');
+            phoneInput.addEventListener('input', function (e) {
+                // 移除非數字字元
+                let rawValue = e.target.value.replace(/\D/g, '');
+                // 限制最多 10 碼數字
+                rawValue = rawValue.substring(0, 10);
+                
+                let x = rawValue.match(/(\d{0,4})(\d{0,3})(\d{0,3})/);
+                if (!x) {
+                    e.target.value = '';
+                    return;
+                }
+                e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
             });
         });
 
@@ -435,12 +454,20 @@
             const toast = document.getElementById('errorToast');
             document.getElementById('errorToastText').textContent = msg;
             toast.classList.remove('opacity-0', 'translate-y-[-20px]');
-            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-[-20px]'), 3000);
+            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-[-20px]'), 3500);
         }
 
         document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            const formData = new FormData(e.target);
             
+            // 驗證電話號碼必須剛好 10 碼數字
+            const phoneRaw = formData.get('phone').replace(/\D/g, '');
+            if (phoneRaw.length !== 10) {
+                document.getElementById('phoneInput').focus();
+                return showError("請輸入完整 10 碼電話號碼");
+            }
+
             // 多選題必填驗證
             const vehicleChecked = document.querySelectorAll('input[name="vehicle"]:checked').length > 0;
             const needTypeChecked = document.querySelectorAll('input[name="needType"]:checked').length > 0;
@@ -473,8 +500,6 @@
             btnText.style.opacity = '0.5';
             spinner.classList.remove('hidden');
 
-            const formData = new FormData(e.target);
-            
             const needTypes = Array.from(formData.getAll('needType'));
             if(needTypes.includes('其他')) {
                 const otherText = document.getElementById('needTypeOtherText').value || '未填寫';
@@ -507,23 +532,32 @@
                 `🕒 聯繫：${contactTimes.length > 0 ? contactTimes.join(', ') : '無'}`;
 
             try {
-                // 為了讓使用者看到讀取動畫，加入短暫的延遲
+                // 短暫延遲顯示 loading 視覺效果
                 await new Promise(resolve => setTimeout(resolve, 800));
 
-                // 僅發送 LINE 訊息到聊天室
                 if (liff.isInClient()) {
+                    // 發送訊息至聊天室
                     await liff.sendMessages([{ type: 'text', text: messageText }]);
+                    
+                    // 顯示成功彈窗
+                    document.getElementById('successModal').classList.remove('hidden');
+                    
+                    // 停留 2.5 秒後自動關閉整個 LINE 視窗
+                    setTimeout(() => {
+                        liff.closeWindow();
+                    }, 2500);
+
                 } else {
-                    console.log("網頁版測試，表單資料不會送出至 LINE，資料內容：\n" + messageText);
+                    console.log("網頁版測試，表單不會送出至 LINE，資料內容：\n" + messageText);
+                    document.getElementById('successModal').classList.remove('hidden');
                 }
-                
-                // 顯示成功彈窗
-                document.getElementById('successModal').classList.remove('hidden');
                 
             } catch (error) {
                 console.error('LIFF sendMessages error', error);
-                alert("送出失敗，請確認網路連線或直接聯繫客服。");
+                // 發生錯誤時跳出警告，並取消按鈕 loading 狀態
+                alert("傳送失敗！請確認您是在 LINE 聊天室內開啟此連結，並授權傳送訊息。");
             } finally {
+                // 如果有設定自動關閉，這裡的恢復狀態只會在失敗時或網頁版被看到
                 btn.disabled = false;
                 btnText.style.opacity = '1';
                 spinner.classList.add('hidden');
@@ -535,6 +569,7 @@
             if (liff.isInClient()) {
                 liff.closeWindow();
             } else {
+                // 網頁版測試用的重置邏輯
                 document.getElementById('inquiryForm').reset();
                 document.getElementById('needTypeOtherText').classList.add('hidden');
                 document.getElementById('billingOtherText').classList.add('hidden');
